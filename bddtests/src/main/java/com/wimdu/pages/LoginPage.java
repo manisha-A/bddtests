@@ -7,6 +7,7 @@ import net.serenitybdd.core.pages.WebElementFacade;
 import org.fluentlenium.core.Alert;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.security.UserAndPassword;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.yecht.Data;
 
 /**
@@ -16,6 +17,8 @@ public class LoginPage extends PageObject {
     private static String ERRORMESSAGE = "Invalid email or password.";
     private static String LOGINTEXT = "LOG IN";
     private static String LOGGEDINTEXT = "Signed in successfully.";
+    private static String SERVER_URL ="https://qa:testing@barcelona.staging.wimdu.com";
+    private static String LOGIN_URL = "https://barcelona.staging.wimdu.com/users/login";
 
     @FindBy(id="user_email")
     private WebElementFacade userEmail;
@@ -42,10 +45,9 @@ public class LoginPage extends PageObject {
     private WebElementFacade flashMessage;
 
     public void go_to_login(){
-        getDriver().manage().window().maximize();
-        waitForRenderedElementsToBePresent(By.id("navbar"));
-        navigationBarLogin.click();
-//        getDriver().get("https://barcelona.staging.wimdu.com/users/login");
+//        waitForRenderedElementsToBePresent(By.id("navbar"));
+//        navigationBarLogin.click();
+        getDriver().get(LOGIN_URL);
     }
 
     public void enter_user(String user,String password){
@@ -72,7 +74,8 @@ public class LoginPage extends PageObject {
     }
 
     public void server_login(){
-        getDriver().get("https://qa:testing@barcelona.staging.wimdu.com");
+        getDriver().get(SERVER_URL);
+        getDriver().manage().window().maximize();
     }
 
     public void is_on_dashboard(){

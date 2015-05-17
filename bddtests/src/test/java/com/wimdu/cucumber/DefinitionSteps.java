@@ -1,5 +1,6 @@
 package com.wimdu.cucumber;
 
+import cucumber.api.java.After;
 import cucumber.api.java.Before;
 import cucumber.api.java.en.And;
 import net.thucydides.core.annotations.Steps;
@@ -19,7 +20,7 @@ public class DefinitionSteps {
         endUser.server_login();
     }
 
-    @Before
+    @After
     public void afterEveryScenario(){
         endUser.getDriver().close();
     }
@@ -83,7 +84,7 @@ public class DefinitionSteps {
         endUser.assert_required_field_error_message();
     }
 
-    @When("^I try to sign up with facebook$")
+    @When("^I try to (?:login|sign up) with facebook$")
     public void i_try_to_sign_up_with_facebook() {
         endUser.connect_with_facebook();
     }

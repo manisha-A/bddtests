@@ -16,6 +16,7 @@ public class SignupPage extends PageObject {
 
     private static String SIGNUPTEXT = "SIGN UP FOR FREE";
     private static String MANDATORYFIELDERROR ="Please fill in";
+    private static String REGISTRATION_URL="https://barcelona.staging.wimdu.com/users/register/sign_up";
 
     @FindBy(id="user_firstname")
     private WebElementFacade userFirstName;
@@ -46,7 +47,7 @@ public class SignupPage extends PageObject {
 
     public void go_to_registration(){
         getDriver().manage().window().maximize();
-        getDriver().get("https://barcelona.staging.wimdu.com/users/register/sign_up");
+        getDriver().get(REGISTRATION_URL);
     }
 
     public void sign_up(){

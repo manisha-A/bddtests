@@ -13,7 +13,6 @@ Feature: Login as an existing user
     | username    | password |
     | abc@abc.com | 123      |
 
-
   Scenario Outline: Login as an existing user with correct details
     Given I am on login page
     And I enter "<username>" and "<password>"
@@ -24,3 +23,8 @@ Feature: Login as an existing user
   Examples:
     | username       | password |
     | test@wimdu.com | testing  |
+
+  Scenario: Login with facebook
+    Given I am on login page
+    When I try to login with facebook
+    Then I should be on facebook login page
