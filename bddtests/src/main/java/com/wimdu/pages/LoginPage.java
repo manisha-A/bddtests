@@ -66,10 +66,6 @@ public class LoginPage extends PageObject {
     }
 
     public void validate_error(){
-        WebElement invalidInput = getDriver().findElement(By.cssSelector("input:invalid"));
-        System.out.println("***********");
-        System.out.println(invalidInput.getText().toString());
-        System.out.println("***********");
         assert errorMessage.containsText(ERRORMESSAGE);
     }
 
