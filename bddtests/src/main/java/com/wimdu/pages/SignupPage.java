@@ -79,4 +79,16 @@ public class SignupPage extends PageObject {
         // close facebook window
         getDriver().close();
     }
+
+    public void enter_sign_up_details(String firstName,String lastName, String email, String password){
+        userFirstName.sendKeys(firstName);
+        userLastName.sendKeys(lastName);
+        userEmail.sendKeys(email);
+        userPassword.sendKeys(password);
+    }
+
+    public void validate_error_message(String error){
+        assert inputFieldError.isDisplayed();
+        assert inputFieldError.getText().contains(error);
+    }
 }

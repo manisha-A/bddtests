@@ -92,4 +92,14 @@ public class DefinitionSteps {
     public void i_should_be_on_facebook_login_page() {
         endUser.validate_facebook_login_page();
     }
+
+    @Given("^I enter \"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\"$")
+    public void i_enter(String firstname, String lastname, String email, String password) {
+        endUser.enter_sign_up_details(firstname,lastname,email,password);
+    }
+
+    @Then("^I should see valid error \"(.*?)\"$")
+    public void i_should_see_valid_error(String errormessage) {
+        endUser.validate_error(errormessage);
+    }
 }

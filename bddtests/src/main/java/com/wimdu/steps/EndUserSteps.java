@@ -6,6 +6,7 @@ import com.wimdu.pages.SignupPage;
 import net.thucydides.core.annotations.Step;
 import net.thucydides.core.pages.Pages;
 import net.thucydides.core.steps.ScenarioSteps;
+import org.jruby.ext.stringio.RubyStringIO$INVOKER$i$0$1$read_nonblock;
 
 import static ch.lambdaj.Lambda.join;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -84,5 +85,15 @@ public class EndUserSteps extends ScenarioSteps {
     @Step
     public void assert_logged_in(){
         loginpage.is_logged_in();
+    }
+
+    @Step
+    public void enter_sign_up_details(String firstName,String lastName, String email, String password){
+        signuppage.enter_sign_up_details(firstName, lastName, email, password);
+    }
+
+    @Step
+    public void validate_error(String error){
+        signuppage.validate_error_message(error);
     }
 }
