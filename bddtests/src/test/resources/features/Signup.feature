@@ -22,11 +22,23 @@ Feature: SignUp
     And I should see valid error "<message>"
 
   Examples:
-    | firstname | lastname | email         | password | message                               |
-    | test      | test     | test          | test12   | Please enter a valid email address    |
-    | test      | test     | test@.com     | test12   | Please enter a valid email address    |
-    | test      | test     | test.com      | test12   | Please enter a valid email address    |
-    | test      | test     | test@test.com | test2    | too short (no less than 6 characters) |
+    | firstname | lastname | email           | password | message                                                   |
+    | test      | test     | test            | test12   | Please enter a valid email address                        |
+    | test      | test     | test@.com       | test12   | Please enter a valid email address                        |
+    | test      | test     | test.com        | test12   | Please enter a valid email address                        |
+    | test      | test     | test@qatest.com | test2    | too short (no less than 6 characters)                     |
+    | test      | test     | test@wimdu.com  | test12   | This email address is already taken, please enter another |
+
+  Scenario Outline: Sign up as a new user with valid details
+    Given I am on registration page
+    And I enter valid "<firstname>","<lastname>","<email>","<password>"
+    And I register
+    Then I should be on my dashboard
+
+  Examples:
+    | firstname | lastname | email         | password |
+    | test      | test     | test@test.com | test12   |
+
 
 
 

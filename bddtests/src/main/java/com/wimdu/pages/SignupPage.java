@@ -4,6 +4,7 @@ import net.serenitybdd.core.annotations.findby.By;
 import net.serenitybdd.core.pages.PageObject;
 import net.serenitybdd.core.pages.WebElementFacade;
 import net.serenitybdd.core.annotations.findby.FindBy;
+import org.apache.commons.lang3.RandomStringUtils;
 
 import java.util.Set;
 
@@ -90,5 +91,13 @@ public class SignupPage extends PageObject {
     public void validate_error_message(String error){
         assert inputFieldError.isDisplayed();
         assert inputFieldError.getText().contains(error);
+    }
+
+    public void enter_sign_up_with_valid_details(String firstName,String lastName, String email, String password){
+        String newemail = RandomStringUtils.randomAlphabetic(3).concat(email);
+        userFirstName.sendKeys(firstName);
+        userLastName.sendKeys(lastName);
+        userEmail.sendKeys(newemail);
+        userPassword.sendKeys(password);
     }
 }

@@ -95,11 +95,16 @@ public class DefinitionSteps {
 
     @Given("^I enter \"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\"$")
     public void i_enter(String firstname, String lastname, String email, String password) {
-        endUser.enter_sign_up_details(firstname,lastname,email,password);
+        endUser.enter_sign_up_details(firstname, lastname, email, password);
     }
 
     @Then("^I should see valid error \"(.*?)\"$")
     public void i_should_see_valid_error(String errormessage) {
         endUser.validate_error(errormessage);
+    }
+
+    @Given("^I enter valid \"(.*?)\",\"(.*?)\",\"(.*?)\",\"(.*?)\"$")
+    public void i_enter_valid_details(String firstname, String lastname, String email, String password) {
+        endUser.enter_sign_up_with_valid_details(firstname, lastname, email, password);
     }
 }

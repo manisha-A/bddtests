@@ -96,4 +96,9 @@ public class EndUserSteps extends ScenarioSteps {
     public void validate_error(String error){
         signuppage.validate_error_message(error);
     }
+
+    @Step
+    public void enter_sign_up_with_valid_details(String firstName,String lastName, String email, String password){
+        signuppage.enter_sign_up_with_valid_details(firstName, lastName, email, password);
+    }
 }
